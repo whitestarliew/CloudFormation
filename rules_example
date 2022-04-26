@@ -1,0 +1,13 @@
+Rules:
+  IsSSLCertificate:
+  RuleCondition: !Equals
+    - !Ref UseSSL
+    - Yes
+    
+Assertions:
+  - Assertions: !Not
+      - !Equals
+        - !Ref ALBSSLCertificateARN
+        - ''
+        
+    AssertDescription: 'ACM certificate ' 
