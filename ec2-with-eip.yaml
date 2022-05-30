@@ -1,4 +1,4 @@
-
+#This is the basic stuff when we are going to implement an instance.
 Resources:
   MyInstance:
     Type: AWS::EC2::Instance
