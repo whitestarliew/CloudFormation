@@ -1,4 +1,5 @@
 #This is the basic stuff when we are going to implement an instance.
+#Resources is a MANDATORY feature when you deploy an CF template 
 Resources:
   MyInstance:
     Type: AWS::EC2::Instance
