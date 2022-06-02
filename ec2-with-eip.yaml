@@ -38,4 +38,8 @@ Resources:
         CidrIp: 0.0.0.0/0
         FromPort: 80
         ToPort: 80 
+      - IpProtocol: ssh
+        CidrIp: 0.0.0.0/0
+        FromPort: 3389
+        ToPort: 3389 
   
