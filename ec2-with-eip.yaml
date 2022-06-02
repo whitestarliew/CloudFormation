@@ -38,4 +38,14 @@ Resources:
         CidrIp: 0.0.0.0/0
         FromPort: 3389
         ToPort: 3389 
-  
+ 
+    #VPC:
+      #Type: "AWS::EC2::VPC"
+      #Properties:
+        #EnableDnsSupport: "true"
+        #EnableDnsHostnames: "true"
+        #CidrBlock:
+          #Fn::FindInMap:
+            #- "SubnetConfig"
+            #- "VPC"
+            #- "CIDR"
