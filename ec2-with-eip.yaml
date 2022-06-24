@@ -13,8 +13,8 @@ Resources:
       BlockDeviceMappings:
         - DeviceName: /dev/sdc
           Ebs:
-            VolumeSize: 20
-            VolumeType: gp2 
+            VolumeSize: 30
+            VolumeType: gp3 
             DeleteOnTermination: "true"
    #take note that gp2 cannot make an 'iops' provisioned on this.
 
