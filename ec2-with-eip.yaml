@@ -10,6 +10,7 @@ Resources:
       SecurityGroups:
         - !Ref SSHSecurityGroup
         # EBS volume setup
+      Deletion Policy: Retain
       BlockDeviceMappings:
         - DeviceName: /dev/sdc
           Ebs:
