@@ -1,0 +1,68 @@
+Resources:
+  VPCCF:
+    Type: AWS::EC2::VPC
+    Properties: 
+      CidrBlock: 192.168.12.0/24
+      EnableDnsHostnames: True
+      EnableDnsSupport: True
+      Tags:
+        -
+          Key: "Name"
+          Value: "VPC With CloudFormation"
+
+#Internet Gateway 
+  IGWforCloudFormation:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - 
+          Key: "Name"
+          Value: "CloudFormation on Internet Gateway"
+
+  IGWAttachtoVPC:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref VPCCF
+      InternetGatewayId: !Ref IGWforCloudFormation
+
+  #Route Table
+
+  PublicFacingRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPCCF
+      Tags:
+        - 
+          Key: "Name"
+          Value: "Public Route Table CloudFormation"
+
+  
+  RouteTableAssociate:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: !Ref PublicFacingRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref IGWforCloudFormation
+
+
+  #Subnet
+  publicsubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPCCF
+      AvailabilityZone: us-east-1a
+      CidrBlock: 192.168.12.33/27
+      MapPublicIpOnLaunch: False
+      Tags:
+        - Key: Name
+          Value: public subnet on CloudFormation
+  
+  RTAttachtosubnet:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId: !Ref PublicFacingRouteTable
+      SubnetId: publicsubnet1
+  
+
+
+
