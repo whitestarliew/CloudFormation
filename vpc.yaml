@@ -63,13 +63,12 @@ Resources:
       RouteTableId: !Ref PublicFacingRouteTable
       SubnetId: publicsubnet1
   
-  Outputs: 
-    VPCtest:
-      Description: Output for VPC
-      Value: !Ref VPCCF
-      Export:
-        Name: VPCOutput
-        
+Outputs: 
+  VPCtest:
+    Description: Output for VPC
+    Value: !Ref VPCCF
+    Export:
+      Name: VPCOutput
 
 
 
