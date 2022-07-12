@@ -1,10 +1,10 @@
 # test
-Parameters:
-  InstanceType:
-    Description: Reference for the InstanceType
-    Type: String
-    Default: t2.micro
-    AllowedValues: [t2.micro]
+#Parameters:
+#  InstanceType:
+#    Description: Reference for the InstanceType
+#    Type: String
+#    Default: t2.micro
+#    AllowedValues: [t2.micro]
 
 
 Resources:
@@ -51,6 +51,11 @@ Resources:
         FromPort: 443
         ToPort: 443
 
-
+Outputs:
+  SGOutput:
+    Description: Output for Security Group
+    Value: !Ref SSHSecurityGroup
+    Export:
+      Name: SGoutput
 
       
