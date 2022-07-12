@@ -67,7 +67,9 @@ Resources:
     VPCtest:
       Description: Output for VPC
       Value: !Ref VPCCF
-        Name: !Sub "${AWS::StackName}-VPCID"
+      Export:
+        Name: VPCOutput
+        
 
 
 
