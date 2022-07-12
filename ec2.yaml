@@ -1,29 +1,36 @@
-#This is the basic stuff when we are going to implement an instance.
-#Resources is a MANDATORY feature when you deploy an CF template 
+# test
+Parameters:
+  InstanceType:
+    Description: Reference for the InstanceType
+    Type: String
+    Default: t2.micro
+    AllowedValues: [t2.micro]
+
+
 Resources:
   MyInstance:
     Type: AWS::EC2::Instance
     Properties:
-      AvailabilityZone: ap-southeast-2a
-      ImageId: ami-0c6120f461d6b39e9
+      ImageId: ami-0cff7528ff583bf9a
       InstanceType: t2.micro
       SecurityGroups:
         - !Ref SSHSecurityGroup
         # EBS volume setup
-      Deletion Policy: Retain
+      #Deletion Policy: Retain
       BlockDeviceMappings:
         - DeviceName: /dev/sdc
           Ebs:
-            VolumeSize: 30
+            VolumeSize: 20
             VolumeType: gp3 
             DeleteOnTermination: "true"
+      
    #take note that gp2 cannot make an 'iops' provisioned on this.
 
   # an elastic IP for our instance
-  MyEIP:
-    Type: AWS::EC2::EIP
-    Properties:
-      InstanceId: !Ref MyInstance
+  # MyEIP:
+  #   Type: AWS::EC2::EIP
+  #   Properties:
+  #     InstanceId: !Ref MyInstance
 
   # our EC2 security group
   SSHSecurityGroup:
@@ -38,15 +45,12 @@ Resources:
       - IpProtocol: tcp
         CidrIp: 0.0.0.0/0
         FromPort: 3389
-        ToPort: 3389 
- 
-    #VPC:
-      #Type: "AWS::EC2::VPC"
-      #Properties:
-        #EnableDnsSupport: "true"
-        #EnableDnsHostnames: "true"
-        #CidrBlock:
-          #Fn::FindInMap:
-            #- "SubnetConfig"
-            #- "VPC"
-            #- "CIDR"
+        ToPort: 3389
+      - IpProtocol: tcp
+        CidrIp: 0.0.0.0/0
+        FromPort: 443
+        ToPort: 443
+
+
+
+      
