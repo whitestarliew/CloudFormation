@@ -70,5 +70,16 @@ Outputs:
     Export:
       Name: VPCOutput
 
-
-
+  SubnetOutput:
+    Description: Output for subnet
+    Value: !Ref publicsubnet1
+    Export:
+      Name: subnetO
+  
+  RoutableOutput:
+    Description: Output for subnet
+    Value: !Ref PublicFacingRouteTable
+    Export:
+      Name: rtoutput
+  
+        
