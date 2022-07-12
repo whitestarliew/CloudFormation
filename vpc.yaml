@@ -61,7 +61,7 @@ Resources:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
       RouteTableId: !Ref PublicFacingRouteTable
-      SubnetId: publicsubnet1
+      SubnetId: !Ref publicsubnet1
   
 Outputs: 
   VPCtest:
