@@ -36,13 +36,30 @@ Resources:
           Key: "Name"
           Value: "Public Route Table CloudFormation"
 
-  
-  RouteTableAssociate:
+  PrivateFacingRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPCCF
+      Tags:
+        - 
+          Key: "Name"
+          Value: "Private Route Table CloudFormation"
+
+  #Routing 
+
+  RouteTableAssociate1:
     Type: AWS::EC2::Route
     Properties:
       RouteTableId: !Ref PublicFacingRouteTable
       DestinationCidrBlock: 0.0.0.0/0
       GatewayId: !Ref IGWforCloudFormation
+      
+  RouteTableAssociate2:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: !Ref PrivateFacingRouteTable
+      DestinationCidrBlock: 192.168.12.1/27
+      VpcEndpointId: !Ref VPCCF
       
 
       
@@ -70,12 +87,19 @@ Resources:
       Tags:
         - Key: Name
           Value: private subnet on CloudFormation
-          
-  RTAttachtosubnet:
+
+#Route Table attachment           
+  RTAttachtosubnet1:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
       RouteTableId: !Ref PublicFacingRouteTable
       SubnetId: !Ref publicsubnet1
+
+  # RTAttachtosubnet2:
+  #   Type: AWS::EC2::SubnetRouteTableAssociation
+  #   Properties:
+  #     RouteTableId: !Ref PrivateFacingRouteTable
+  #     SubnetId: !Ref privatesubnet1
   
 Outputs: 
   VPCtest:
@@ -89,9 +113,16 @@ Outputs:
     Value: !Ref publicsubnet1
     Export:
       Name: subnetO
+
+  SubnetOutput2:
+    Description: Output for subnet
+    Value: !Ref privatesubnet1
+    Export:
+      Name: subnet1
+
   
   RoutableOutput:
     Description: Output for subnet
     Value: !Ref PublicFacingRouteTable
     Export:
-      Name: rtoutput
+      Name: rtoutputW
