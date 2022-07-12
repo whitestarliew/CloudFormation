@@ -31,7 +31,6 @@ Resources:
     Type: AWS::EC2::RouteTable
     Properties:
       VpcId: !Ref VPCCF
-      CidrBlock: 192.168.12.1/26
       Tags:
         - 
           Key: "Name"
@@ -45,22 +44,8 @@ Resources:
       DestinationCidrBlock: 0.0.0.0/0
       GatewayId: !Ref IGWforCloudFormation
       
-  PrivateFacingRouteTable:
-    Type: AWS::EC2::RouteTable
-    Properties:
-      VpcId: !Ref VPCCF
-      CidrBlock: 192.168.12.66/26
-      Tags:
-        - 
-          Key: "Name"
-          Value: "Private Route Table CloudFormation"
-   
-   PrivateRouteTableAssociate:
-    Type: AWS::EC2::Route
-    Properties:
-      RouteTableId: !Ref PublicFacingRouteTable
-      DestinationCidrBlock: 192.168.12.0/24
-      RouteTableId: !Ref PublicFacingRouteTable
+
+      
 
   #Subnet
   publicsubnet1:
@@ -68,7 +53,7 @@ Resources:
     Properties:
       VpcId: !Ref VPCCF
       AvailabilityZone: us-east-1a
-      CidrBlock: 192.168.12.33/27
+      CidrBlock: 192.168.12.1/27
       MapPublicIpOnLaunch: False
       Tags:
         - Key: Name
@@ -110,5 +95,3 @@ Outputs:
     Value: !Ref PublicFacingRouteTable
     Export:
       Name: rtoutput
-  
-        
