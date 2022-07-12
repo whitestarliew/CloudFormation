@@ -61,7 +61,13 @@ Resources:
       DestinationCidrBlock: 192.168.12.1/27
       VpcEndpointId: !Ref VPCCF
       
-
+#Nat Gateway
+  NatgatewayCF:
+    Type: AWS::EC2::NatGateway
+    Properties:
+      # AllocationId: String  --> Just in case you have an Elastic IP then you use 
+      ConnectivityType: Public
+      SubnetId: !Ref publicsubnet1
       
 
   #Subnet
@@ -76,17 +82,13 @@ Resources:
         - Key: Name
           Value: public subnet on CloudFormation
           
-          
-  privatesubnet1:
-    Type: AWS::EC2::Subnet
-    Properties:
-      VpcId: !Ref VPCCF
-      AvailabilityZone: us-east-1a
-      CidrBlock: 192.168.12.100/27
-      MapPublicIpOnLaunch: False
-      Tags:
-        - Key: Name
-          Value: private subnet on CloudFormation
+  # RTAttachtosubnet2:
+  #   Type: AWS::EC2::SubnetRouteTableAssociation
+  #   Properties:
+  #     RouteTableId: !Ref PrivateFacingRouteTable
+  #     SubnetId: !Ref privatesubnet1
+  
+
 
 #Route Table attachment           
   RTAttachtosubnet1:
@@ -126,3 +128,9 @@ Outputs:
     Value: !Ref PublicFacingRouteTable
     Export:
       Name: rtoutputW
+      
+  IGWOutput:
+    Description: Output for IGW
+    Value: !Ref IGWforCloudFormation
+    Export:
+      Name: IGWO
