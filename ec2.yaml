@@ -12,7 +12,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: ami-0cff7528ff583bf9a
-      InstanceType: t2.micro
+      InstanceType: t3.micro
       SecurityGroups:
         - !Ref SSHSecurityGroup
         # EBS volume setup
@@ -26,11 +26,10 @@ Resources:
    KeypairNew: 
      Type: AWS::EC2::KeyPair
        Properties: 
-         KeyName: String
-         KeyType: String
-         PublicKeyMaterial: String
-           Tags: 
-    - Tag
+         KeyName: cftest
+         KeyType: rsa
+         #PublicKeyMaterial: String
+
       #SecurityGroup: !Ref xxxxxxxxxxxxx --> key in the existing security group name
       
    #take note that gp2 cannot make an 'iops' provisioned on this.
