@@ -1,26 +1,27 @@
-Type: AWS::ElasticLoadBalancingV2::TargetGroup
-Properties: 
-  HealthCheckEnabled: False
-  HealthCheckIntervalSeconds: 60
-  HealthCheckPath: #String
-  HealthCheckPort: 80
-  HealthCheckProtocol: http
-  HealthCheckTimeoutSeconds: 90
-  HealthyThresholdCount: 2
-  IpAddressType: #String
-  Matcher: 
-    Matcher
-  Name: String
-  Port: Integer
-  Protocol: String
-  ProtocolVersion: String
-  Tags: 
-    - Name: #tbd
-    - Value: #tbd
-  TargetGroupAttributes: 
-    - TargetGroupAttribute
-  Targets: 
-    - #TargetDescription
-  TargetType: #to be determine
-  UnhealthyThresholdCount: 1
-  VpcId: !ImportValue VPCCF
+Resources:
+  Type: AWS::ElasticLoadBalancingV2::TargetGroup
+  Properties: 
+    HealthCheckEnabled: False
+    HealthCheckIntervalSeconds: 60
+    HealthCheckPath: #String
+    HealthCheckPort: 80
+    HealthCheckProtocol: http
+    HealthCheckTimeoutSeconds: 90
+    HealthyThresholdCount: 2
+    IpAddressType: #String
+    Matcher: 
+      Matcher
+    Name: String
+    Port: 80
+    Protocol: http
+    ProtocolVersion: String
+    Tags: 
+      - Name: #tbd
+      - Value: #tbd
+    TargetGroupAttributes: 
+      - TargetGroupAttribute
+    Targets: 
+      - #TargetDescription
+    TargetType: #to be determine
+    UnhealthyThresholdCount: 1
+    VpcId: !ImportValue VPCCF
