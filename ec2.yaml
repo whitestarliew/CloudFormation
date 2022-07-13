@@ -21,8 +21,17 @@ Resources:
         - DeviceName: /dev/sdc
           Ebs:
             VolumeSize: 20
-            VolumeType: gp3 
+            VolumeType: gp3
             DeleteOnTermination: "true"
+   KeypairNew: 
+     Type: AWS::EC2::KeyPair
+       Properties: 
+         KeyName: String
+         KeyType: String
+         PublicKeyMaterial: String
+           Tags: 
+    - Tag
+      #SecurityGroup: !Ref xxxxxxxxxxxxx --> key in the existing security group name
       
    #take note that gp2 cannot make an 'iops' provisioned on this.
 
@@ -32,7 +41,7 @@ Resources:
   #   Properties:
   #     InstanceId: !Ref MyInstance
 
-  # our EC2 security group
+  # New EC2 security group
   SSHSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
@@ -50,6 +59,8 @@ Resources:
         CidrIp: 0.0.0.0/0
         FromPort: 443
         ToPort: 443
+
+   
 
 Outputs:
   SGOutput:
