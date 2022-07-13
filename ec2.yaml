@@ -23,11 +23,6 @@ Resources:
             VolumeSize: 20
             VolumeType: gp3
             DeleteOnTermination: "true"
-   KeypairNew: 
-     Type: AWS::EC2::KeyPair
-       Properties: 
-         KeyName: cftest
-         KeyType: rsa
          #PublicKeyMaterial: String
 
       #SecurityGroup: !Ref xxxxxxxxxxxxx --> key in the existing security group name
