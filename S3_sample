@@ -4,3 +4,6 @@ Resources:
     Properties:
       AccessControl: PublicRead
       BucketName: "liew-9833405"
+      ServerSideEncryptionConfiguration: ServerSideEncryptionRule
+
+Outputs: 
