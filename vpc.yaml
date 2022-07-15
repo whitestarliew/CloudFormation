@@ -1,3 +1,14 @@
+Parameters:
+  InstanceType:
+    Description: just a template for the instance, nothing more than that.
+    Type: String
+    Default: t3.micro
+    AllowedValues:
+      -t3.micro
+      -t3.medium
+    ConstraintDescription: Kindly use a valid instance type.
+
+
 Resources:
   VPCCF:
     Type: AWS::EC2::VPC
