@@ -3,8 +3,8 @@
 #  InstanceType:
 #    Description: Reference for the InstanceType
 #    Type: String
-#    Default: t2.micro
-#    AllowedValues: [t2.micro]
+#    Default: t3.micro
+#    AllowedValues: [t3.micro]
 
 
 Resources:
@@ -12,7 +12,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: ami-0cff7528ff583bf9a
-      AvailabilityZone: us-east-1a
+      AvailabilityZone: us-east-1d
       InstanceType: t3.micro
       EbsOptimized: false
       SecurityGroups:
