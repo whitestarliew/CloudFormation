@@ -14,6 +14,7 @@ Resources:
       ImageId: ami-0cff7528ff583bf9a
       AvailabilityZone: us-east-1a
       InstanceType: t3.micro
+      EbsOptimized: false
       SecurityGroups:
         - !Ref SSHSecurityGroup
         # EBS volume setup
@@ -24,6 +25,17 @@ Resources:
             VolumeSize: 20
             VolumeType: gp3
             DeleteOnTermination: "true"
+      Tags:
+        - Key: Name
+        - Value: CFTest
+      UserData:
+        Fn::Base64 !Sub |
+        #!/bin/bash -xe
+        sudo apt-get update
+        sudo apt-get install awscli
+        sudo mkdir /etc/ssl/nginx
+        
+      
          #PublicKeyMaterial: String
 
       #SecurityGroup: !Ref xxxxxxxxxxxxx --> key in the existing security group name
