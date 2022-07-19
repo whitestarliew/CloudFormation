@@ -5,7 +5,7 @@
 #    Type: String
 #    Default: t3.micro
 #    AllowedValues: [t3.micro]
-
+#Test 
 
 Resources:
   MyInstance:
