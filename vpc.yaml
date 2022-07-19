@@ -93,6 +93,18 @@ Resources:
         - Key: Name
           Value: public subnet on CloudFormation
           
+
+  #Private Subnet 
+  privatesubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPCCF
+      AvailabilityZone: us-east-1a
+      CidrBlock: 192.168.12.65/27
+      MapPublicIpOnLaunch: False
+      Tags:
+        - Key: Name
+          Value: private subnet on CloudFormation
   # RTAttachtosubnet2:
   #   Type: AWS::EC2::SubnetRouteTableAssociation
   #   Properties:
