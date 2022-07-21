@@ -1,0 +1,14 @@
+#It just a test 
+
+Resources:
+  newsso:
+    Type: AWS::SSO::Assignment
+    Properties: 
+      InstanceArn: # Required to fill in! 
+      #arn:partition:service:region:account-id:resource-type/resource-id 
+      #kindly refer to the aws doc 
+      PermissionSetArn: String
+      PrincipalId: String
+      PrincipalType: String
+      TargetId: #Required fill in! String
+      TargetType: String
