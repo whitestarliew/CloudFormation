@@ -27,13 +27,43 @@ Resources:
             DeleteOnTermination: "true"
       Tags:
         - Key: Name
-        - Value: CFTest
+          Value: CFTest
       UserData:
         Fn::Base64 !Sub |
         #!/bin/bash -xe
         sudo apt-get update
         sudo apt-get install awscli
         sudo mkdir /etc/ssl/nginx
+        
+   MyInstance2:
+     Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0cff7528ff583bf9a
+      AvailabilityZone: us-east-1b
+      InstanceType: t3.micro
+      EbsOptimized: false
+      SecurityGroups:
+        - !Ref SSHSecurityGroup
+        # EBS volume setup
+      #Deletion Policy: Retain
+      BlockDeviceMappings:
+        - DeviceName: /dev/sdc
+          Ebs:
+            VolumeSize: 20
+            VolumeType: gp3
+            DeleteOnTermination: "true"
+      Tags:
+        - Key: Name
+          Value: Another instance 
+      UserData:
+        Fn::Base64 !Sub |
+        #!/bin/bash -xe
+        sudo apt-get update
+        sudo apt-get install awscli
+        sudo mkdir /etc/ssl/nginx
+        sudo apt-get install mysql
+        sudo apt-get install httpd
+        
         
       
          #PublicKeyMaterial: String
@@ -66,9 +96,20 @@ Resources:
         CidrIp: 0.0.0.0/0
         FromPort: 443
         ToPort: 443
+<<<<<<< HEAD
     RDSfortest:
       Type: AWS::EC2::RDS
 
+=======
+      - IpProtocol: tcp
+        CidrIp: 0.0.0.0/0
+        FromPort: 80
+        Toport:   80
+      - IpProtocol: tcp
+        CidrIp: 0.0.0.0/0
+        FromPort: 3306
+        Toport: 3306
+>>>>>>> 8ca391b23c93fb85fe15a3bebd942514a460cbff
    
 
 Outputs:
@@ -77,5 +118,11 @@ Outputs:
     Value: !Ref SSHSecurityGroup
     Export:
       Name: SGoutput
+      
+  Instanceoutput:
+    Description: Output for EC2 instance
+    Value: !Ref Myinstance
+    Export: 
+      Name: InstanceOutput
 
     
