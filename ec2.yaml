@@ -66,6 +66,8 @@ Resources:
         CidrIp: 0.0.0.0/0
         FromPort: 443
         ToPort: 443
+    RDSfortest:
+      Type: AWS::EC2::RDS
 
    
 
@@ -76,4 +78,4 @@ Outputs:
     Export:
       Name: SGoutput
 
-      
+    
