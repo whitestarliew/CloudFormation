@@ -109,6 +109,9 @@ Resources:
     Type: AWS::RDS::DBInstance
     Properties:
       AllocatedStorage: MySQL
+      DBSecurityGroups: !Ref SSHSecurityGroup
+      Engine: mysql
+      MasterUserPassword: 12345678
 Outputs:
   SGOutput:
     Description: Output for Security Group
