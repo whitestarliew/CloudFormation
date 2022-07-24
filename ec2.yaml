@@ -100,6 +100,10 @@ Resources:
         CidrIp: 0.0.0.0/0
         FromPort: 80
         Toport:   80
+      - IpProtocol: tcp
+        CidrIp: 0.0.0.0/0
+        FromPort: 3306
+        Toport: 3306
    
 
 Outputs:
