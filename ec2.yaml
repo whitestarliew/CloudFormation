@@ -96,11 +96,6 @@ Resources:
         CidrIp: 0.0.0.0/0
         FromPort: 443
         ToPort: 443
-<<<<<<< HEAD
-    RDSfortest:
-      Type: AWS::EC2::RDS
-
-=======
       - IpProtocol: tcp
         CidrIp: 0.0.0.0/0
         FromPort: 80
@@ -109,9 +104,11 @@ Resources:
         CidrIp: 0.0.0.0/0
         FromPort: 3306
         Toport: 3306
->>>>>>> 8ca391b23c93fb85fe15a3bebd942514a460cbff
    
-
+  RDSforTest:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      AllocatedStorage: MySQL
 Outputs:
   SGOutput:
     Description: Output for Security Group

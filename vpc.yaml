@@ -21,6 +21,17 @@ Resources:
           Key: "Name"
           Value: "VPC With CloudFormation"
 
+  VPCCF2:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 192.168.13.0/24
+      EnableDnsHostnames: True
+      EnableDnsSupport: True
+      Tags:
+        - 
+          Key: "Name"
+          Value: "VPC2 with cloudformation"
+
 #Internet Gateway 
   IGWforCloudFormation:
     Type: AWS::EC2::InternetGateway
