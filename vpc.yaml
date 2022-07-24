@@ -118,6 +118,18 @@ Resources:
       Tags:
         - Key: Name
           Value: private subnet on CloudFormation
+  
+ #peering connection 
+  p2pvpc:
+    Type: AWS::EC2::VPCPeeringConnection
+    Properties:
+      PeerOwnerId:
+      PeerRegion: us-east-1
+      PeerRoleArn:
+      PeerVPCId:
+      Tags:
+        - Key: name
+          Value: just a peer
   # RTAttachtosubnet2:
   #   Type: AWS::EC2::SubnetRouteTableAssociation
   #   Properties:

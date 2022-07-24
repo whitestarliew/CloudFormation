@@ -28,15 +28,15 @@ Resources:
       Tags:
         - Key: Name
           Value: CFTest
-      UserData:
-        Fn::Base64 !Sub |
-        #!/bin/bash -xe
-        sudo apt-get update
-        sudo apt-get install awscli
-        sudo mkdir /etc/ssl/nginx
+      # UserData:
+      #   Fn::Base64 !Sub |
+      #   #!/bin/bash -xe
+      #   sudo apt-get update
+      #   sudo apt-get install awscli
+      #   sudo mkdir /etc/ssl/nginx
         
-   MyInstance2:
-     Type: AWS::EC2::Instance
+  MyInstance2:
+    Type: AWS::EC2::Instance
     Properties:
       ImageId: ami-0cff7528ff583bf9a
       AvailabilityZone: us-east-1b
@@ -45,26 +45,26 @@ Resources:
       SecurityGroups:
         - !Ref SSHSecurityGroup
         # EBS volume setup
-      #Deletion Policy: Retain
+        #Deletion Policy: Retain
       BlockDeviceMappings:
-        - DeviceName: /dev/sdc
-          Ebs:
-            VolumeSize: 20
-            VolumeType: gp3
-            DeleteOnTermination: "true"
+      - DeviceName: /dev/sdc
+        Ebs:
+          VolumeSize: 20
+          VolumeType: gp3
+          DeleteOnTermination: "true"
       Tags:
         - Key: Name
           Value: Another instance 
-      UserData:
-        Fn::Base64 !Sub |
-        #!/bin/bash -xe
-        sudo apt-get update
-        sudo apt-get install awscli
-        sudo mkdir /etc/ssl/nginx
-        sudo apt-get install mysql
-        sudo apt-get install httpd
+      # UserData:
+      #   Fn::Base64 !Sub |
+      #   #!/bin/bash -xe
+      #   sudo apt-get update
+      #   sudo apt-get install awscli
+      #   sudo mkdir /etc/ssl/nginx
+      #   sudo apt-get install mysql
+      #   sudo apt-get install httpd
         
-        
+      
       
          #PublicKeyMaterial: String
 
@@ -99,11 +99,11 @@ Resources:
       - IpProtocol: tcp
         CidrIp: 0.0.0.0/0
         FromPort: 80
-        Toport:   80
+        ToPort:   80
       - IpProtocol: tcp
         CidrIp: 0.0.0.0/0
         FromPort: 3306
-        Toport: 3306
+        ToPort: 3306
    
   RDSforTest:
     Type: AWS::RDS::DBInstance
@@ -121,7 +121,7 @@ Outputs:
       
   Instanceoutput:
     Description: Output for EC2 instance
-    Value: !Ref Myinstance
+    Value: !Ref MyInstance
     Export: 
       Name: InstanceOutput
 
