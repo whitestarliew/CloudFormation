@@ -1,16 +1,18 @@
-#It just a test 
-
 Resources:
   newRDS:
-    Type: AWS::RDS::Instance
-      Properties:
-        DBSecurityGroups:
-        Engine: MySQL
-        EngineVersion: 8.0.28
-        DBInstanceIdentifier:
-        MasterUsername: !Ref DBUsername
-        MasterUserPassword: Hello123
-        MonitoringInterval: '60'
-        MonitoringRoleArn: 'arn:aws:iam::{enteryourownarn}:role/rds-monitoring-role'
-        Storage:
-          StorageType: IO2
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBSecurityGroups: 
+        - "NewSecurityGroup"
+      Engine: MySQL
+      EngineVersion: 8.0.28
+      DBInstanceIdentifier: "database-1"
+      MasterUsername: "laputa"
+      MasterUserPassword: Hello123
+      #MonitoringInterval: '60'
+      #MonitoringRoleArn: 'arn:aws:iam::{enteryourownarn}:role/rds-monitoring-role'
+      AllocatedStorage: 20
+      StorageEncrypted: False
+      DBInstanceClass: t2.micro
+      MultiAZ: False
+      AvailabilityZone: us-east-1d
