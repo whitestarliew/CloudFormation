@@ -1,5 +1,5 @@
 Resources:
-  SQSCF
+  SQSCF:
     Type: AWS::SQS::Queue
     Properties: 
       ContentBasedDeduplication: False
@@ -9,8 +9,8 @@ Resources:
       MaximumMessageSize: 256
       MessageRetentionPeriod: 60
       QueueName: sqstest
-      ReceiveMessageWaitTimeSeconds: Integer
-      SqsManagedSseEnabled: 0
+      ReceiveMessageWaitTimeSeconds: 0
+      SqsManagedSseEnabled: False
       Tags: 
         - Key: "Name"
           Value: "SQSCF"
