@@ -1,0 +1,17 @@
+Resources:
+  SQSCF
+    Type: AWS::SQS::Queue
+    Properties: 
+      ContentBasedDeduplication: False
+      DeduplicationScope: String
+      DelaySeconds: 5
+      FifoQueue: False
+      MaximumMessageSize: 256
+      MessageRetentionPeriod: 60
+      QueueName: sqstest
+      ReceiveMessageWaitTimeSeconds: Integer
+      SqsManagedSseEnabled: 0
+      Tags: 
+        - Key: "Name"
+          Value: "SQSCF"
+      VisibilityTimeout: 30
