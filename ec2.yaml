@@ -1,18 +1,34 @@
 # test
-#Parameters:
+Parameters:
 #  InstanceType:
 #    Description: Reference for the InstanceType
 #    Type: String
 #    Default: t3.micro
 #    AllowedValues: [t3.micro]
 #Test 
+  subnetcf:
+    Type: AWS::EC2::Subnet
+    Properties: 
+      AssignIpv6AddressOnCreation: False
+      AvailabilityZone: us-east-1a
+      AvailabilityZoneId: String
+      CidrBlock: String
+      EnableDns64: Boolean
+      Ipv6CidrBlock: String
+      Ipv6Native: Boolean
+      MapPublicIpOnLaunch: Boolean
+      OutpostArn: String
+      PrivateDnsNameOptionsOnLaunch: Json
+      Tags: 
+        - Tag
+      VpcId: 
 
 Resources:
   MyInstance:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: ami-0cff7528ff583bf9a
-      AvailabilityZone: us-east-1d
+      AvailabilityZone: us-east-1a
       InstanceType: t3.micro
       EbsOptimized: false
       SecurityGroups:
