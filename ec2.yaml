@@ -39,7 +39,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: ami-0cff7528ff583bf9a
-      AvailabilityZone: us-east-1b
+      AvailabilityZone: us-east-1d
       InstanceType: t3.micro
       EbsOptimized: false
       SecurityGroups:
@@ -105,13 +105,13 @@ Resources:
         FromPort: 3306
         ToPort: 3306
    
-  RDSforTest:
-    Type: AWS::RDS::DBInstance
-    Properties:
-      AllocatedStorage: MySQL
-      DBSecurityGroups: !Ref SSHSecurityGroup
-      Engine: mysql
-      MasterUserPassword: 12345678
+  #RDSforTest:
+   # Type: AWS::RDS::DBInstance
+    #Properties:
+     # AllocatedStorage: MySQL
+      #DBSecurityGroups: !Ref SSHSecurityGroup
+      #Engine: mysql
+      #MasterUserPassword: 12345678
 Outputs:
   SGOutput:
     Description: Output for Security Group
