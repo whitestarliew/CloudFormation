@@ -95,6 +95,25 @@ Resources:
   #     InstanceId: !Ref MyInstance
 
   # New EC2 security group
+  ALBCF:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties: 
+      IpAddressType: String
+      LoadBalancerAttributes: 
+        - LoadBalancerAttribute
+      Name: String
+      Scheme: String
+      SecurityGroups: !Ref SSHSecurityGroup
+      SubnetMappings: 
+        - SubnetMapping
+      Subnets: 
+        - us-east-1a
+        - us-east-1d
+      Tags: 
+        - Key: Name
+        - Value: ALBCF
+      #Type: 
+  
   SSHSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
