@@ -8,6 +8,10 @@ Parameters:
      - t2.micro
      - t3.micro
 
+Mappings:
+  AWSRegionAMI:
+    ap-southeast-1:
+      HVM64: ami-0c802847a7dd848c0
 
 #Conditions:
  # CreateDevResources: !Equals [ !Ref EnvType, dev]
