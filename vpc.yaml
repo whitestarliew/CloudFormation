@@ -130,6 +130,7 @@ Resources:
       Tags:
         - Key: name
           Value: just a peer
+          
   # RTAttachtosubnet2:
   #   Type: AWS::EC2::SubnetRouteTableAssociation
   #   Properties:

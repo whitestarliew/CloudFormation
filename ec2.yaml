@@ -12,33 +12,23 @@ Mappings:
   AWSRegionAMI:
     ap-southeast-1:
       HVM64: ami-0c802847a7dd848c0
+    us-east-1:
+      HVM64: ami-0cff7528ff583bf9a
+    ap-east-1:
+      HVM64: ami-0bf6e149a5267c1af
 
 #Conditions:
  # CreateDevResources: !Equals [ !Ref EnvType, dev]
 #Test 
-  subnetcf:
-    Type: AWS::EC2::Subnet
-    Properties: 
-      AssignIpv6AddressOnCreation: False
-      AvailabilityZone: us-east-1a
-      AvailabilityZoneId: String
-      CidrBlock: String
-      EnableDns64: Boolean
-      Ipv6CidrBlock: String
-      Ipv6Native: Boolean
-      MapPublicIpOnLaunch: Boolean
-      OutpostArn: String
-      PrivateDnsNameOptionsOnLaunch: Json
-      Tags: 
-        - Tag
-      VpcId: 
+
 
 Resources:
   MyInstance:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: ami-0cff7528ff583bf9a
-      AvailabilityZone: us-east-1a
+      ImageId: !FindInMap [AWSRegionAMI, !Ref 'AWS::Region', HVM64]
+      #ami-0cff7528ff583bf9a
+      AvailabilityZone: us-east-1d
       InstanceType: t3.micro
       EbsOptimized: false
       SecurityGroups:
@@ -64,7 +54,8 @@ Resources:
   MyInstance2:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: ami-0cff7528ff583bf9a
+      ImageId: !FindInMap [AWSRegionAMI, !Ref 'AWS::Region', HVM64] 
+      #ami-0cff7528ff583bf9a
       AvailabilityZone: us-east-1d
       InstanceType: t3.micro
       EbsOptimized: false
@@ -105,23 +96,23 @@ Resources:
   #     InstanceId: !Ref MyInstance
 
   # New EC2 security group
-  ALBCF:
-    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
-    Properties: 
-      IpAddressType: String
-      LoadBalancerAttributes: 
-        - LoadBalancerAttribute
-      Name: String
-      Scheme: String
-      SecurityGroups: !Ref SSHSecurityGroup
-      SubnetMappings: 
-        - SubnetMapping
-      Subnets: 
-        - us-east-1a
-        - us-east-1d
-      Tags: 
-        - Key: Name
-        - Value: ALBCF
+  # ALBCF:
+  #   Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+  #   Properties: 
+  #     IpAddressType: String
+  #     LoadBalancerAttributes: 
+  #       - LoadBalancerAttribute
+  #     Name: String
+  #     Scheme: String
+  #     SecurityGroups: !Ref SSHSecurityGroup
+  #     SubnetMappings: 
+  #       - SubnetMapping
+  #     Subnets: 
+  #       - us-east-1a
+  #       - us-east-1d
+  #     Tags: 
+  #       - Key: Name
+  #       - Value: ALBCF
       #Type: 
   
   SSHSecurityGroup:
