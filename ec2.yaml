@@ -7,9 +7,7 @@ Parameters:
    AllowedValues: 
      - t2.micro
      - t3.micro
-  #Keynamefortest:
-  #  Description: Use an existing keypair for you to SSH inside.
-  #  Type: AWS::EC2::KeyPair::Keynamefortest
+
 
 Mappings:
   AWSRegionAMI:
@@ -20,9 +18,6 @@ Mappings:
     ap-east-1:
       HVM64: ami-0bf6e149a5267c1af
 
-#Conditions:
- # CreateDevResources: !Equals [ !Ref EnvType, dev]
-#Test 
 
 
 Resources:
@@ -30,14 +25,12 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: !FindInMap [AWSRegionAMI, !Ref 'AWS::Region', HVM64]
-      #ami-0cff7528ff583bf9a
       AvailabilityZone: us-east-1d
       InstanceType: t3.micro
       EbsOptimized: false
       SecurityGroups:
         - !Ref SSHSecurityGroup
         # EBS volume setup
-      #Deletion Policy: Retain
       BlockDeviceMappings:
         - DeviceName: /dev/sdc
           Ebs:
@@ -62,16 +55,14 @@ Resources:
         
   MyInstance2:
     Type: AWS::EC2::Instance
+    DeletionPolicy: Retain
     Properties:
       ImageId: !FindInMap [AWSRegionAMI, !Ref 'AWS::Region', HVM64] 
-      #ami-0cff7528ff583bf9a
       AvailabilityZone: us-east-1d
       InstanceType: t3.micro
       EbsOptimized: false
       SecurityGroups:
         - !Ref SSHSecurityGroup
-        # EBS volume setup
-        #Deletion Policy: Retain
       BlockDeviceMappings:
       - DeviceName: /dev/sdc
         Ebs:
@@ -81,6 +72,18 @@ Resources:
       Tags:
         - Key: Name
           Value: Another instance 
+      UserData:
+        Fn::Base64: |
+           #!/bin/bash 
+           yum update -y
+           sudo yum install -y yum-utils
+           sudo yum-config-manager \
+             --add-repo \
+             https://download.docker.com/linux/centos/docker-ce.repo
+           sudo yum install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+           sudo systemctl start docker
+           sudo docker run hello-world
+
       # UserData:
       #   Fn::Base64 !Sub |
       #   #!/bin/bash -xe
