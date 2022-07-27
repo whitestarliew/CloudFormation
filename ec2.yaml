@@ -1,10 +1,16 @@
 # test
 Parameters:
-#  InstanceType:
-#    Description: Reference for the InstanceType
-#    Type: String
-#    Default: t3.micro
-#    AllowedValues: [t3.micro]
+ InstanceType:
+   Description: Reference for the InstanceType
+   Type: String
+   Default: t3.micro
+   AllowedValues: 
+     - t2.micro
+     - t3.micro
+
+
+#Conditions:
+ # CreateDevResources: !Equals [ !Ref EnvType, dev]
 #Test 
   subnetcf:
     Type: AWS::EC2::Subnet
