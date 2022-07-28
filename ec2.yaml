@@ -110,7 +110,7 @@ Resources:
   # ALBCF:
   #   Type: AWS::ElasticLoadBalancingV2::LoadBalancer
   #   Properties: 
-  #     IpAddressType: String
+  #     IpAddressType: ipv4
   #     LoadBalancerAttributes: 
   #       - LoadBalancerAttribute
   #     Name: String
@@ -125,6 +125,18 @@ Resources:
   #       - Key: Name
   #       - Value: ALBCF
       #Type: 
+  TargetGroupCF:
+     Type: AWS::ElasticLoadBalancingV2::TargetGroup
+     Properties: 
+       HealthCheckEnabled: False
+       IpAddressType: ipv4
+       Name: TGCF
+       Port: 80
+       Protocol: HTTP
+       #Target: Please refer to the document        
+       TargetType: instance
+       VpcId: !Ref VPCCF
+
   
   SSHSecurityGroup:
     Type: AWS::EC2::SecurityGroup
