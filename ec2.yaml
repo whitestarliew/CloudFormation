@@ -51,6 +51,7 @@ Resources:
            sudo yum install docker-ce docker-ce-cli containerd.io docker-compose-plugin
            sudo systemctl start docker
            sudo docker run hello-world
+     DependsOn: MyInstance2
 
         
   MyInstance2:
