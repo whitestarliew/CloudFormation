@@ -56,7 +56,7 @@ Resources:
         
   MyInstance2:
     Type: AWS::EC2::Instance
-    DeletionPolicy: Retain
+    #DeletionPolicy: Retain
     Properties:
       ImageId: !FindInMap [AWSRegionAMI, !Ref 'AWS::Region', HVM64] 
       AvailabilityZone: us-east-1d
