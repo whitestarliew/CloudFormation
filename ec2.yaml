@@ -1,5 +1,12 @@
 # test
 Parameters:
+  EnvType:
+    Description: Environment type that we use
+    Type: #string
+    Default: test
+    AllowedValues:
+      - prod
+      - test
  InstanceType:
    Description: Reference for the InstanceType
    Type: String
