@@ -4,7 +4,7 @@ Resources:
     Properties: 
       #KmsKeyId: String
       LogGroupName: cw
-      #RetentionInDays: 2
+      RetentionInDays: 1
       Tags: 
         - Key: Name
           Value: CW
