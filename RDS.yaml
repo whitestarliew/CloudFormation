@@ -14,5 +14,5 @@ Resources:
       AllocatedStorage: 20
       StorageEncrypted: False
       DBInstanceClass: t2.micro
-      MultiAZ: False
+      MultiAZ: True
       AvailabilityZone: us-east-1d
