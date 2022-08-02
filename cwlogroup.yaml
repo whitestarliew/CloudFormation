@@ -2,9 +2,9 @@ Resources:
   cwcf:
     Type: AWS::Logs::LogGroup
     Properties: 
-      KmsKeyId: String
+      #KmsKeyId: String
       LogGroupName: cw
-      RetentionInDays: 2
+      #RetentionInDays: 2
       Tags: 
         - Key: Name
           Value: CW
