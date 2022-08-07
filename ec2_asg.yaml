@@ -89,7 +89,7 @@ Resources:
    
 Outputs:
   SGOutput:
-    Description: Output for Security Group
+    Description: Output for SG Group sample
     Value: !Ref SSHSecurityGroup
     Export:
       Name: SGoutput
