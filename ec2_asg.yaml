@@ -21,6 +21,15 @@ Mappings:
 
 
 Resources:
+  ASGCF:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    Properties:
+      AutoScalingGroupName: ASG_CF
+      DesiredCapacity: 1
+      DesiredCapacityType: t3.micro
+      Cooldown: 10
+      CapacityRebalance: false
+      
   MyInstance:
     Type: AWS::EC2::Instance
     Properties:
