@@ -1,0 +1,10 @@
+Resources:
+  Type: AWS::GlobalAccelerator::Accelerator
+  Properties: 
+    Enabled: True
+    IpAddresses: 
+      - String
+    IpAddressType: String
+    Name: String
+    Tags: 
+      - Tag
