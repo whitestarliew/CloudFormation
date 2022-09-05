@@ -15,7 +15,18 @@ Mappings:
       AvailabilityZone: ap-southeast-1a
     ap-southeast-2:
       AvailabilityZone: ap-southeast-2a
-
+    us-east-1:
+      AvailabilityZone: us-east-1a
+  
+  IPRange:
+    eu-west-2:
+      CidrBlock: 192.168.10.0/24
+    ap-east-1:
+      CidrBlock: 192.168.11.0/24
+    ap-southeast-1:
+      CidrBlock: 192.168.13.0/24
+    us-east-1:
+      CidrBlock: 192.168.12.0/24
   
   
 
@@ -47,20 +58,16 @@ Resources:
       InternetGatewayId: !Ref IGWforCloudFormation
 
 
-  #Routing means that where did the route table goes to 
+     
+  #Public Subnet
 
-
-
-      
-
-  #Subnet
   publicsubnet1:
     Type: AWS::EC2::Subnet
     Properties:
       VpcId: !Ref VPCCF
       AvailabilityZone: !FindInMap [AZforMapping, !Ref 'AWS::Region',AvailabilityZone]
       CidrBlock: 192.168.12.1/27
-      MapPublicIpOnLaunch: False
+      MapPublicIpOnLaunch: True
       Tags:
         - Key: Name
           Value: public subnet on CloudFormation
@@ -113,29 +120,33 @@ Resources:
       SubnetId: !Ref privatesubnet1
       RouteTableId: !Ref PrivateFacingRouteTable
 
-  # RouteTableAssociate2:
-  #   Type: AWS::EC2::Route
-  #   Properties:
-  #     RouteTableId: !Ref PrivateFacingRouteTable
-  #     DestinationCidrBlock: 192.168.12.65/27
-  #     VpcEndpointId: !Ref VPCCF
+
+#Nat Gateway 
+  NatGatewayCF:
+    Type: AWS::EC2::NatGateway
+    Properties:
+      AllocationId: !GetAtt NatGatewayEIP.AllocationId
+      SubnetId: !Ref publicsubnet1
+      Tags:
+      - Key: Name
+        Value: publicfacingNAT
+  NatGatewayEIP:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: vpc
+  NatGatewayRouting:
+    DependsOn: NatGatewayCF
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: !Ref PrivateFacingRouteTable
+      DestinationBlock: '0.0.0.0/0'
+      NatGatewayId: !Ref NatGatewayCF
+      DependsOn: NatGatewayCF
   
 
 
 #Route Table attachment           
-  RTAttachtosubnet1:
-    Type: AWS::EC2::SubnetRouteTableAssociation
-    Properties:
-      RouteTableId: !Ref PublicFacingRouteTable
-      SubnetId: !Ref publicsubnet1
 
-  # RTAttachtosubnet2:
-  #   Type: AWS::EC2::SubnetRouteTableAssociation
-  #   Properties:
-  #     RouteTableId: !Ref PrivateFacingRouteTable
-  #     SubnetId: !Ref privatesubnet1
-  
-  # test
 
 Outputs: 
   VPCtest:
@@ -143,3 +154,14 @@ Outputs:
     Value: !Ref VPCCF
     Export:
       Name: VPC1
+  
+  PublicSubnetOutput:
+    Description: Subnet for output
+    Value: !Ref publicsubnet1
+    Export:
+      Name: publicsubnetoutput
+  PrivateSubnetOutput:
+    Description: Private Subnet for output
+    Value: !Ref privatesubnet1
+    Export:
+      Name: privatesubnetoutput
