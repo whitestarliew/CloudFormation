@@ -13,6 +13,8 @@ Parameters:
     Default: t3.micro
     AllowedValues: 
       - t3.micro
+      - m4.large
+      - t3.medium
 
 
 #Kindly remember all of the AMI are use Windows Server 2019 Base x86
