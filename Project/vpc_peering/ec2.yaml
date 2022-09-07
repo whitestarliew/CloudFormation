@@ -1,6 +1,6 @@
 # test
 #Parameters is the Instance type that which 1 you are ALLOWED to use
-#Please  use Cloudformation to deploy this .
+#Please  use Cloudformation to deploy this
 Parameters:
   InstanceType:
     Description: Reference for the InstanceType
@@ -30,7 +30,7 @@ Mappings:
     ap-southeast-2:
       HVM64: ami-08e49cb12f5231fd8
   #north virginia
-    us-east-1:
+    us-east-1: ami-0c95d38b24a19de18
       HVM64: ami- 
   AZforMapping:
     eu-west-2:
@@ -49,9 +49,10 @@ Resources:
     Properties:
       ImageId: !FindInMap [AWSRegionAMI, !Ref 'AWS::Region', HVM64]
       AvailabilityZone: !FindInMap [AZforMapping, !Ref 'AWS::Region',AvailabilityZone]
-      InstanceType: t3.micro
+      InstanceType: !Ref InstanceType
       EbsOptimized: false
-      VPC: !Ref VPC1
+ #Unless you have a specific VPC, or else you may use the DEFAULT VPC
+     # VPC: !Ref VPC1
       Subnet: !Ref 
       SecurityGroups:
         - !Ref SSHSecurityGroup
@@ -65,33 +66,8 @@ Resources:
       Tags:
         - Key: Name
           Value: CFTest1
-      # UserData:
-      #   Fn::Base64: |
-      #      #!/bin/bash 
-    DependsOn: MyInstance2
-
         
-  MyInstance2:
-    Type: AWS::EC2::Instance
-    #DeletionPolicy: Retain
-    Properties:
-      ImageId: !FindInMap [AWSRegionAMI, !Ref 'AWS::Region', HVM64] 
-      AvailabilityZone: us-east-1d
-      InstanceType: t3.micro
-      EbsOptimized: false
-      SecurityGroups:
-        - !Ref SSHSecurityGroup
-      BlockDeviceMappings:
-      - DeviceName: /dev/sdc
-        Ebs:
-          VolumeSize: 15
-          VolumeType: gp3
-          DeleteOnTermination: "true"
-      Tags:
-        - Key: Name
-          Value: Another instance 
 
-        
       
          #PublicKeyMaterial: String
 
