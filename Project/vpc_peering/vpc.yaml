@@ -138,10 +138,9 @@ Resources:
     DependsOn: NatGatewayCF
     Type: AWS::EC2::Route
     Properties:
-      RouteTableId: !Ref PrivateFacingRouteTable
+      RouteTableId: !Ref PublicFacingRouteTable
       DestinationBlock: '0.0.0.0/0'
       NatGatewayId: !Ref NatGatewayCF
-      DependsOn: NatGatewayCF
   
 
 
