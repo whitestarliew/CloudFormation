@@ -17,18 +17,10 @@ Mappings:
       AvailabilityZone: ap-southeast-2a
     us-east-1:
       AvailabilityZone: us-east-1a
+    me-south-1:
+      AvailabilityZone: me-south-1a
   
-  IPRange:
-    eu-west-2:
-      CidrBlock: 192.168.10.0/24
-    ap-east-1:
-      CidrBlock: 192.168.11.0/24
-    ap-southeast-1:
-      CidrBlock: 192.168.13.0/24
-    us-east-1:
-      CidrBlock: 192.168.12.0/24
-  
-  
+
 
 Resources:
   VPCCF:
@@ -138,15 +130,17 @@ Resources:
     DependsOn: NatGatewayCF
     Type: AWS::EC2::Route
     Properties:
+<<<<<<< HEAD
       RouteTableId: !Ref PublicFacingRouteTable
       DestinationBlock: '0.0.0.0/0'
+=======
+      RouteTableId: !Ref PrivateFacingRouteTable
+      DestinationCidrBlock: '0.0.0.0/0'
+>>>>>>> 9c8163e68fb1d076f4d375dee9c9120ace4b9687
       NatGatewayId: !Ref NatGatewayCF
   
 
-
 #Route Table attachment           
-
-
 Outputs: 
   VPCtest:
     Description: Output for VPC

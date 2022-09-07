@@ -1,3 +1,9 @@
+Mappings:
+  AvailabilityZoneMappings:
+    us-east-1:
+      AvailabilityZone: us-east-1a
+    ap-southeast-1:
+      AvailabilityZone: ap-southeast-1a
 Resources:
   newRDS:
     Type: AWS::RDS::DBInstance
@@ -11,8 +17,10 @@ Resources:
       MasterUserPassword: Hello123
       #MonitoringInterval: '60'
       #MonitoringRoleArn: 'arn:aws:iam::{enteryourownarn}:role/rds-monitoring-role'
+      # Allocated Storage means that how much of the storage(In GB) we needed? 
       AllocatedStorage: 20
       StorageEncrypted: False
       DBInstanceClass: db.t2.micro
+      #If you are not to build high availability architecture, then just disable it "False" 
       MultiAZ: False
-      AvailabilityZone: us-east-1d
+      AvailabilityZone: !FindInMap 
