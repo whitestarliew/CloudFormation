@@ -30,8 +30,8 @@ Mappings:
     ap-southeast-2:
       HVM64: ami-08e49cb12f5231fd8
   #north virginia
-    us-east-1: ami-0c95d38b24a19de18
-      HVM64: ami- 
+    us-east-1: 
+      HVM64: ami-0c95d38b24a19de18
   AZforMapping:
     eu-west-2:
       AvailabilityZone: eu-west-2a
@@ -72,16 +72,9 @@ Resources:
       Properties:
       #KeyName , check the console and the product team.
         KeyName: NameForMyImportedKeyPair
-      
-        PublicKeyMaterial: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICfp1F7DhdWZdqkYAUGCzcBsLmJeu9izpIyGpmmg7eCz example
+      #Try to retrieve the keymaterial from the public key(that key you may have or ask for product team)
+        #PublicKeyMaterial: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICfp1F7DhdWZdqkYAUGCzcBsLmJeu9izpIyGpmmg7eCz 
         
-
-      
-         #PublicKeyMaterial: String
-
-      #SecurityGroup: !Ref xxxxxxxxxxxxx --> key in the existing security group name
-      
-   #take note that gp2 cannot make an 'iops' provisioned on this.
 
   # an elastic IP for our instance
   # MyEIP:
@@ -89,25 +82,6 @@ Resources:
   #   Properties:
   #     InstanceId: !Ref MyInstance
 
-  ALBCF:
-    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
-    Properties: 
-      IpAddressType: ipv4
-      LoadBalancerAttributes: 
-        - Key: deletion_protection.enabled
-          Value: false
-      Name: String
-      Scheme: String
-      SecurityGroups: !Ref SSHSecurityGroup
-      SubnetMappings: 
-        - SubnetMapping
-      Subnets: 
-        - us-east-1a
-        - us-east-1d
-      Tags: 
-        - Key: Name
-        - Value: ALBCF
-      #Type: 
   TargetGroupCF:
      Type: AWS::ElasticLoadBalancingV2::TargetGroup
      Properties: 
@@ -147,13 +121,6 @@ Resources:
         FromPort: 3306
         ToPort: 3306
    
-  #RDSforTest:
-   # Type: AWS::RDS::DBInstance
-    #Properties:
-     # AllocatedStorage: MySQL
-      #DBSecurityGroups: !Ref SSHSecurityGroup
-      #Engine: mysql
-      #MasterUserPassword: 12345678
 Outputs:
   SGOutput:
     Description: Output for Security Group
