@@ -66,6 +66,14 @@ Resources:
       Tags:
         - Key: Name
           Value: CFTest1
+     #If you use a existing keypair, then you have to use this ..... or else you need to create a new 1
+    ImportedKeyPair:
+      Type: AWS::EC2::KeyPair
+      Properties:
+      #KeyName , check the console and the product team.
+        KeyName: NameForMyImportedKeyPair
+      
+        PublicKeyMaterial: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICfp1F7DhdWZdqkYAUGCzcBsLmJeu9izpIyGpmmg7eCz example
         
 
       
