@@ -1,12 +1,7 @@
 # test
+#Parameters is the Instance type that which 1 you are ALLOWED to use
+#Please  use Cloudformation to deploy this .
 Parameters:
-  EnvType:
-    Description: Environment type that we use
-    Type: String
-    Default: test
-    AllowedValues:
-      - prod
-      - test
   InstanceType:
     Description: Reference for the InstanceType
     Type: String
@@ -15,6 +10,8 @@ Parameters:
       - t3.micro
       - m4.large
       - t3.medium
+      - t2.mirco
+      - c4.xlarge
 
 
 #Kindly remember all of the AMI are use Windows Server 2019 Base x86
@@ -32,6 +29,9 @@ Mappings:
   #Sidney  
     ap-southeast-2:
       HVM64: ami-08e49cb12f5231fd8
+  #north virginia
+    us-east-1:
+      HVM64: ami- 
   AZforMapping:
     eu-west-2:
       AvailabilityZone: eu-west-2a
@@ -90,19 +90,8 @@ Resources:
       Tags:
         - Key: Name
           Value: Another instance 
-      UserData:
-        Fn::Base64: |
-           #!/bin/bash 
-           yum update -y
-           sudo yum install -y yum-utils
-           sudo yum-config-manager \
-             --add-repo \
-             https://download.docker.com/linux/centos/docker-ce.repo
-           sudo yum install docker-ce docker-ce-cli containerd.io docker-compose-plugin
-           sudo systemctl start docker
-           sudo docker run hello-world
+
         
-      
       
          #PublicKeyMaterial: String
 
