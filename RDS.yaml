@@ -9,7 +9,7 @@ Resources:
     Type: AWS::RDS::DBInstance
     Properties:
       #DBSecurityGroups: 
-       # - "NewSecurityGroup"
+       # - "NewSecurityGroup" d
       Engine: MySQL
       EngineVersion: 8.0.28
       DBInstanceIdentifier: "database-1"
