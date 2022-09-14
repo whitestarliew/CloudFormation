@@ -1,0 +1,25 @@
+  
+Resources: 
+  Type: AWS::ApiGateway::RestApi
+  Properties: 
+    ApiKeySourceType: X-API-Key
+    BinaryMediaTypes: 
+      - String
+    Body: Json
+    BodyS3Location: 
+      S3Location
+    CloneFrom: String
+    Description: Just testing for API Gateway
+    DisableExecuteApiEndpoint: True
+    EndpointConfiguration: 
+      EndpointConfiguration
+    FailOnWarnings: False
+    MinimumCompressionSize: Integer
+    Mode: String
+    Name: String
+    Parameters: 
+      Key : Name
+      Value: APIName
+    Policy: Json
+    Tags: 
+      - Tag
