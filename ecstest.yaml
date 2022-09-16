@@ -12,7 +12,7 @@ Resources:
     EnableECSManagedTags: False
     EnableExecuteCommand: False
     HealthCheckGracePeriodSeconds: 30
-    LaunchType: Fargate
+    LaunchType: ECS
     LoadBalancers: 
       - LoadBalancer
     NetworkConfiguration: 
