@@ -1,3 +1,8 @@
+
+Parameters:
+
+Mappings:
+
 Resources:
   Type: AWS::ECS::Service
   Properties: 
@@ -29,5 +34,6 @@ Resources:
     ServiceRegistries: 
       - ServiceRegistry
     Tags: 
-      - Tag
+      - Key: Name
+        Value: ECS-Demo
     TaskDefinition: String
