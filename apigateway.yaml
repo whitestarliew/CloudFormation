@@ -14,7 +14,7 @@ Resources:
     EndpointConfiguration: 
       EndpointConfiguration
     FailOnWarnings: False
-    MinimumCompressionSize: Integer
+    MinimumCompressionSize: 1
     Mode: String
     Name: String
     Parameters: 
@@ -22,4 +22,5 @@ Resources:
       Value: APIName
     Policy: Json
     Tags: 
-      - Tag
+      - Key: name
+        Value: Hello
