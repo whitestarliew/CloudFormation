@@ -28,7 +28,7 @@ Resources:
       - PlacementStrategy
     PlatformVersion: String
     PropagateTags: String
-    Role: String
+    Role: ecsInstanceRole
     SchedulingStrategy: String
     ServiceName: String
     ServiceRegistries: 
