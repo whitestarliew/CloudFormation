@@ -7,6 +7,10 @@ Parameters:
     Type: Number
     Default: '1'
     Description: How many maximum number you can reached ?
+  InstanceType:
+    Description: Choose your EC2 Type
+    Type: String
+    Default: t3.micro
 Resources:
   ECSCluster1:
   Type: AWS::ECS::Cluster
