@@ -13,17 +13,14 @@ Parameters:
     Default: t3.micro
 Resources:
   ECSCluster1:
-  Type: AWS::ECS::Cluster
-  Properties: 
-    CapacityProviders: 
-      - String
-    ClusterName: ECSCF
-    ClusterSettings: 
-      - ClusterSettings
-    Configuration: 
-      ClusterConfiguration
-    DefaultCapacityProviderStrategy: 
-      - CapacityProviderStrategyItem
-    Tags: 
-      - Key: Name
-        Value: ECS_Cluster
+    Type: AWS::ECS::Cluster
+    Properties: 
+      ClusterName: ECSCF
+      ClusterSettings: 
+        - Name: ClusterInsights
+          Value: enabled
+      Configuration: 
+        ClusterConfiguration
+      Tags: 
+        - Key: Name
+          Value: ECS_Cluster
