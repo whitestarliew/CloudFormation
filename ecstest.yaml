@@ -1,4 +1,12 @@
 
+Parameters:
+  VpcId:
+    Type: 'AWS::EC2::VPC::Id'
+    Description: Choose one of the VPC 
+  MaxSize:
+    Type: Number
+    Default: '1'
+    Description: How many maximum number you can reached ?
 Resources:
   ECSCluster1:
   Type: AWS::ECS::Cluster
