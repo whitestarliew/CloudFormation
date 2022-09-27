@@ -10,7 +10,7 @@ Parameters:
   InstanceType:
     Description: Choose your EC2 Type
     Type: String
-    Default: t3.micro
+    Default: t2.micro
 Resources:
   ECSCluster1:
     Type: AWS::ECS::Cluster
