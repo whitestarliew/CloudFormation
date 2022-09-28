@@ -5,4 +5,26 @@ Metadata:
   Databases:
     Description: "Database Details"
 
+#Config file sample.
 Resources:
+  MyInstances:
+    Type: AWS::EC2::Instance
+    Metadata:
+      AWS::CloudFormation::Init:
+        config:
+          packages:
+            :
+          groups:
+            :
+          users:
+            :
+          sources:
+            :
+          files:
+            :
+          commands:
+            :
+          services:
+            :
+    Properties:
+    
