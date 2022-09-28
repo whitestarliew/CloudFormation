@@ -1,0 +1,8 @@
+#Optional
+Metadata:
+  Instances:
+    Description: "Instances Details"
+  Databases:
+    Description: "Database Details"
+
+Resources:
