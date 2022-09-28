@@ -1,4 +1,6 @@
   
+
+
 Resources: 
   Type: AWS::ApiGateway::RestApi
   Properties: 
@@ -12,7 +14,7 @@ Resources:
     Description: Just testing for API Gateway
     DisableExecuteApiEndpoint: True
     EndpointConfiguration: 
-      EndpointConfiguration
+      Private
     FailOnWarnings: False
     MinimumCompressionSize: 1
     Mode: String
