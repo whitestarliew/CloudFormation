@@ -14,6 +14,19 @@ Parameters:
     AllowedValues: 
       - t3.micro
 
+  EnvType:
+    Description: Environment type.
+    Default: test
+    Type: String
+    AllowedValues:
+      - prod
+      - test
+      - develop
+    ConstraintDescription: must specify prod or test.
+
+Conditions:
+  CreateProdResources: !Equals [ !Ref EnvType, prod ]
+
 
 Mappings:
   AWSRegionAMI:
