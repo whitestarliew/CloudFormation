@@ -4,9 +4,8 @@
 Resources: 
   Type: AWS::ApiGateway::RestApi
   Properties: 
-    ApiKeySourceType: X-API-Key
     BinaryMediaTypes: 
-      - String
+      - RestApi
     Body: Json
     BodyS3Location: 
       S3Location
