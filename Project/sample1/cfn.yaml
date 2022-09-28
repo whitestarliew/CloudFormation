@@ -16,6 +16,7 @@ Resources:
           #Packages use to download and install pre-package apps.
             :
           groups:
+          #grouping of users 
             :
           users:
             :
