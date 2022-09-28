@@ -13,18 +13,21 @@ Resources:
       AWS::CloudFormation::Init:
         config:
           packages:
+          #Packages use to download and install pre-package apps.
             :
           groups:
             :
           users:
             :
           sources:
+          #download files and archives and place them on EC2
             :
           files:
+          #create files on EC2 ,use inline or can pull from URL.
             :
           commands:
             :
           services:
             :
     Properties:
-    
+
