@@ -2,26 +2,26 @@
 
 
 Resources: 
-  Type: AWS::ApiGateway::RestApi
-  Properties: 
-    BinaryMediaTypes: 
-      - RestApi
-    Body: Json
-    BodyS3Location: 
-      S3Location
-    CloneFrom: String
-    Description: Just testing for API Gateway
-    DisableExecuteApiEndpoint: True
-    EndpointConfiguration: 
-      Private
-    FailOnWarnings: False
-    MinimumCompressionSize: 1
-    Mode: String
-    Name: String
-    Parameters: 
-      Key : Name
-      Value: APIName
-    Policy: Json
-    Tags: 
-      - Key: name
-        Value: Hello
+  APITest:
+    Type: AWS::ApiGateway::RestApi
+    Properties: 
+      BinaryMediaTypes: 
+        - RestApi
+      Body: OpenAPI
+      # BodyS3Location: 
+      #   S3Location
+      CloneFrom: String
+      Description: Just testing for API Gateway
+      DisableExecuteApiEndpoint: True
+#      EndpointConfiguration: 
+      FailOnWarnings: False
+      MinimumCompressionSize: 1
+      Mode: overwrite
+      Name: String
+      Parameters: 
+        Key : Name
+        Value: APITest
+      Policy: Json
+      Tags: 
+        - Key: name
+          Value: Hello
