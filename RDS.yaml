@@ -4,6 +4,8 @@ Mappings:
       AvailabilityZone: us-east-1a
     ap-southeast-1:
       AvailabilityZone: ap-southeast-1a
+    ap-northeast-1:
+      AvailabilityZone: ap-northeast-1a
 Resources:
   newRDS:
     Type: AWS::RDS::DBInstance
