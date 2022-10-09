@@ -1,35 +1,36 @@
-
-
-
-
-
 Parameters:
-  VpcId:
-    Type: 'AWS::EC2::VPC::Id'
-    Description: Choose one of the VPC 
-  MaxSize:
-    Type: Number
-    Default: '1'
-    Description: How many maximum number you can reached ?
-  # InstanceType:
-  #   Description: Choose your EC2 Type
-  #   Type: String
-  #   Default: t2.micro
-  #   AllowedValues: 
-  #     - t3.micro
-  #     - t2.micro
-
+  SecurityGroup:
 
 Resources:
-  ECSCluster:
-    Type: 'AWS::ECS::Cluster'
-    Properties:
-      ClusterName: MyFargateCluster
-      CapacityProviders:
-        - FARGATE
-        - FARGATE_SPOT
-      DefaultCapacityProviderStrategy:
-        - CapacityProvider: FARGATE
-          Weight: 1
-        - CapacityProvider: FARGATE_SPOT
-          Weight: 1
+  Type: AWS::ECS::Service
+  Properties: 
+    CapacityProviderStrategy: 
+      - CapacityProviderStrategyItem
+    Cluster: cluster-demo
+    DeploymentConfiguration: 
+      DeploymentConfiguration
+    DeploymentController: 
+      DeploymentController
+    DesiredCount: 1
+    EnableECSManagedTags: False
+    EnableExecuteCommand: False
+    HealthCheckGracePeriodSeconds: 30
+    LaunchType: Fargate
+    LoadBalancers: 
+      - LoadBalancer
+    NetworkConfiguration: 
+      NetworkConfiguration
+    PlacementConstraints: 
+      - PlacementConstraint
+    PlacementStrategies: 
+      - PlacementStrategy
+    PlatformVersion: String
+    PropagateTags: String
+    Role: String
+    SchedulingStrategy: String
+    ServiceName: String
+    ServiceRegistries: 
+      - ServiceRegistry
+    Tags: 
+      - Tag
+    TaskDefinition: String
