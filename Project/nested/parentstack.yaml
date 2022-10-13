@@ -6,7 +6,7 @@ Parameters:
     Type: AWS::EC2::VPC::Id
   
 Resources:
-  SSHSecurityGroup:
+  SSHSecurityGroup2:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupDescription: !Sub Security group for ${appname}
@@ -31,3 +31,8 @@ Resources:
         CidrIp: 0.0.0.0/0
         FromPort: 3306
         ToPort: 3306
+
+Outputs:
+  SecurityGroupId:
+    Value: !Ref SSHSecurityGroup2
+    Description: Output for Security Group 
