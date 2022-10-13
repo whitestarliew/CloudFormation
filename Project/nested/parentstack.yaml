@@ -11,4 +11,23 @@ Resources:
     Properties:
       GroupDescription: !Sub Security group for ${appname}
       SecurityGroupIngress:
-        - CidrIp: "10.0.0.0/25"
+      - IpProtocol: tcp
+        CidrIp: 0.0.0.0/0
+        FromPort: 22
+        ToPort: 22
+      - IpProtocol: tcp
+        CidrIp: 0.0.0.0/0
+        FromPort: 3389
+        ToPort: 3389
+      - IpProtocol: tcp
+        CidrIp: 0.0.0.0/0
+        FromPort: 443
+        ToPort: 443
+      - IpProtocol: tcp
+        CidrIp: 0.0.0.0/0
+        FromPort: 80
+        ToPort:   80
+      - IpProtocol: tcp
+        CidrIp: 0.0.0.0/0
+        FromPort: 3306
+        ToPort: 3306
