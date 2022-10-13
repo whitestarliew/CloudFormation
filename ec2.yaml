@@ -24,9 +24,6 @@ Parameters:
       - develop
     ConstraintDescription: must specify prod or test.
 
-Conditions:
-  CreateProdResources: !Equals [ !Ref EnvType, prod ]
-
 
 Mappings:
   AWSRegionAMI:
@@ -38,6 +35,8 @@ Mappings:
       HVM64: ami-0bf6e149a5267c1af
     us-east-2:
       HVM64: ami-0b59bfac6be064b78
+  AZforMapping:
+  
 
 
 
