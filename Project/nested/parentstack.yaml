@@ -4,6 +4,21 @@ Parameters:
   VPCId:
     Description: VPC to create the security group into
     Type: AWS::EC2::VPC::Id
+
+Mappings:
+  AZforMapping:
+    eu-west-2:
+      AvailabilityZone: eu-west-2a
+    ap-east-1:
+      AvailabilityZone: ap-east-1a
+    ap-southeast-1:
+      AvailabilityZone: ap-southeast-1a
+    ap-southeast-2:
+      AvailabilityZone: ap-southeast-2a
+    us-east-1:
+      AvailabilityZone: us-east-1a
+    me-south-1:
+      AvailabilityZone: me-south-1a
   
 Resources:
   SSHSecurityGroup2:
