@@ -35,8 +35,22 @@ Mappings:
       HVM64: ami-0bf6e149a5267c1af
     us-east-2:
       HVM64: ami-0b59bfac6be064b78
+
   AZforMapping:
+    eu-west-2:
+      AvailabilityZone: eu-west-2a
+    ap-east-1:
+      AvailabilityZone: ap-east-1a
+    ap-southeast-1:
+      AvailabilityZone: ap-southeast-1a
+    ap-southeast-2:
+      AvailabilityZone: ap-southeast-2a
+    us-east-1:
+      AvailabilityZone: us-east-1a
+    me-south-1:
+      AvailabilityZone: me-south-1a
   
+
 
 
 
@@ -45,7 +59,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: !FindInMap [AWSRegionAMI, !Ref 'AWS::Region', HVM64]
-      AvailabilityZone: us-east-1d
+      AvailabilityZone: !FindInMap [AZforMapping, !Ref 'AWS::Region', AvailabilityZone]
       InstanceType: t3.micro
       EbsOptimized: false
       SecurityGroups:
