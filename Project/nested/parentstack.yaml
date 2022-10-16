@@ -19,6 +19,8 @@ Mappings:
       AvailabilityZone: us-east-1a
     me-south-1:
       AvailabilityZone: me-south-1a
+    us-east-2:
+      AvailabilityZone: us-east-2a
   
 Resources:
   SSHSecurityGroup2:
