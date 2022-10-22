@@ -12,7 +12,7 @@ Resources:
       #Tags: 
        # - Key: "Name"
         #  Value: "SQSCF"
-      VisibilityTimeout: 30
+      VisibilityTimeout: 25
 
 Outputs:
   SQSOutput:
